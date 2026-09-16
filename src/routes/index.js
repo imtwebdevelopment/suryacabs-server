@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 
 const authRoutes = require('./authRoutes');
-const payslipRoutes = require('./payslipRoutes');
+const invoiceRoutes = require('./invoiceRoutes');
 
 // Health check route
 router.get('/', (req, res) => {
@@ -10,6 +10,6 @@ router.get('/', (req, res) => {
 });
 
 router.use('/auth', authRoutes);
-router.use('/payslips', payslipRoutes);
+router.use('/invoices', invoiceRoutes);
 
 module.exports = router;
