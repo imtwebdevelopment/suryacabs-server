@@ -34,7 +34,7 @@ const invoiceSchema = new mongoose.Schema({
   sgst: { type: Number, required: true },
   grandTotal: { type: Number, required: true },
   
-  status: { type: String, enum: ['Paid', 'Pending'], default: 'Pending' }
+  status: { type: String, enum: ['Paid', 'Pending', 'Completed'], default: 'Pending' }
 }, {
   timestamps: true
 });
