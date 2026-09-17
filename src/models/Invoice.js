@@ -21,6 +21,14 @@ const invoiceSchema = new mongoose.Schema({
   particulars: { type: String, default: 'Vehicle Rental Service' },
   amount: { type: Number, required: true },
   
+  // Additional Info
+  bankName: { type: String },
+  accountNo: { type: String },
+  ifscCode: { type: String },
+  sacNo: { type: String },
+  reverseCharge: { type: String },
+  applyGst: { type: String },
+  
   // Taxes & Total
   cgst: { type: Number, required: true },
   sgst: { type: Number, required: true },
