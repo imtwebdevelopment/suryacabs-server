@@ -19,6 +19,12 @@ const invoiceSchema = new mongoose.Schema({
   
   // Particulars
   particulars: { type: String, default: 'Vehicle Rental Service' },
+  items: [
+    {
+      particular: { type: String },
+      amount: { type: Number }
+    }
+  ],
   amount: { type: Number, required: true },
   
   // Additional Info
