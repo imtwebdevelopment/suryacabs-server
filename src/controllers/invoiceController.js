@@ -41,8 +41,50 @@ const getInvoiceById = async (req, res) => {
   }
 };
 
+// @desc    Update an invoice
+// @route   PUT /api/invoices/:id
+// @access  Private
+const updateInvoice = async (req, res) => {
+  try {
+    const invoice = await Invoice.findById(req.params.id);
+
+    if (invoice) {
+      const updatedInvoice = await Invoice.findByIdAndUpdate(
+        req.params.id,
+        req.body,
+        { new: true, runValidators: true }
+      );
+      res.json(updatedInvoice);
+    } else {
+      res.status(404).json({ message: 'Invoice not found' });
+    }
+  } catch (error) {
+    res.status(400).json({ message: error.message });
+  }
+};
+
+// @desc    Delete an invoice
+// @route   DELETE /api/invoices/:id
+// @access  Private
+const deleteInvoice = async (req, res) => {
+  try {
+    const invoice = await Invoice.findById(req.params.id);
+
+    if (invoice) {
+      await invoice.deleteOne();
+      res.json({ message: 'Invoice removed' });
+    } else {
+      res.status(404).json({ message: 'Invoice not found' });
+    }
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};
+
 module.exports = {
   createInvoice,
   getInvoices,
-  getInvoiceById
+  getInvoiceById,
+  updateInvoice,
+  deleteInvoice
 };
